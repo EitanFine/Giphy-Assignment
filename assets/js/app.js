@@ -33,16 +33,17 @@ $( document ).ready(function() {
 		displayGifButtons();
 		return false;
 		});
-	}
-	function displayGifs(){
-		var action = $(this).attr("data-name");
-		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + action + "api_key=dc6zaTOxFJmzC&q";
-		console.log(queryURL); 
-		$.ajax({
-			url: queryURL,
-			method: 'GET'
-		})
-		.done(function(response) {
+// Function that displays all of the gifs
+function displayGifs(){
+    var action = $(this).attr("data-name");
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + action + "&api_key=dc6zaTOxFJmzC&limit=10";
+    console.log(queryURL); // displays the constructed url
+    $.ajax({
+        url: queryURL,
+        method: 'GET'
+    })
+    .done(function(response) {
+ 	.done(function(response) {
 			console.log(response); 
 			$("#gifsView").empty(); // erasing anything in this div id so that it doesnt keep any from the previous click
 			var results = response.data; 
